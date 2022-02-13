@@ -214,17 +214,17 @@ def compute_test_error(X, Y, theta, temp_parameter):
 
 
 def plot_cost_function_over_time(cost_function_history):
-  """
-  Plots the all the iterations of the cost function
-  
+    """
+  Plots all the iterations of the cost function
+
   Args:
       cost_function_history - A Python list containing the cost calculated at each step of gradient descent
-  
+
   Returns:
-      Graph of the cost function iteration
-  """
+     A graph of the cost function iteration
+    """
 
     plt.plot(range(len(cost_function_history)), cost_function_history)
     plt.ylabel('Cost Function')
     plt.xlabel('Iteration number')
-    plt.show()    
+    plt.show()
