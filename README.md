@@ -10,10 +10,7 @@ The MNIST database contains binary images of handwritten digits collected from a
 students, and it is commonly used to train image processing systems. The database contains 60,000 training images and
 10,000 testing images; All of which have been size-normalized and centered in a fixed size of 28 x 28 pixels.
 
-The goal was to first implement and understand why linear methods such as the linear regression aren't adequate for a classification task, but rather
-non-linear ways, such as the multinomial logistic regression (Softmax regression) are more appropriate. Furthermore,  by adjusting hyperparameters,
-and feature engineering the data into low-dimensional features with Principal Components Analysis (PCA) or high-dimensional by implementing kernel methods such
-as Polynomial and Gaussian RBF kernels, it is possible to achieve even better results.
+The project consisted of first implementing linear methods such as the closed form for linear regression and then Support Vector Machine with a linear decision boundary, before moving towards non-linear methods such as multinomial logistic regression (Softmax regression) and feature engineering with higher-order kernel methods of polynomial and radial basis kernel, as well as low-dimensional feature creation with Principal Components Analysis (PCA).
 
 Additional helper functions were given to complete the project in two weeks of time.
 
