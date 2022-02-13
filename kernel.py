@@ -42,9 +42,6 @@ def rbf_kernel(X, Y, gamma):
     n, d = X.shape  
     m = Y.shape[0]
     
-    kernel_matrix = np.linalg.norm((X[:,None] - Y), ord=2, axis=2)**2
-    kernel_matrix = (np.sum(X**2, axis=1)[:,None] + np.sum(Y**2, axis=1)) - 2*(X @ Y.T)
-    
     kernel_matrix = X**2 @ np.ones((d,m)) + np.ones((n,d)) @ Y.T**2 - 2*(X @ Y.T)
     kernel_matrix = np.exp(-gamma*kernel_matrix)
     
