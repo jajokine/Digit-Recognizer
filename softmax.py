@@ -69,7 +69,7 @@ def compute_cost_function(X, Y, theta, lambda_factor, temp_parameter):
     M = sparse.coo_matrix(([1]*n, (Y, range(n))), shape = (k,n)).toarray() # Sparse matrix of [[y^(i)==j]] ; M[i][j] = 1 if y^(j) = 1 and 0 otherwise
     error_term = (-1/n) * np.sum(log_probabilities[M==1]) # Calculate error where M equals 1
     
-    regularization_term = (lambda_factor/2) * np.linalg.norm(theta)**2  # Regularization error
+    regularization_term = (lambda_factor/2) * np.linalg.norm(theta)**2  # Regularization term
     
     return error_term + regularization_term
 
