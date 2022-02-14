@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------------------------------#
 #                                                                                              #
-#  Functions for Feature Engineering - Principal Components Analysis (PCA) and Cubic Features  #
+#                           Functions for Feature Engineering                                  #
 #                                                                                              #
 # ---------------------------------------------------------------------------------------------#
 
@@ -9,6 +9,30 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+
+# Modular Arithmetic Changes
+
+def update_y(train_y, test_y):
+    """
+    Changes the old digit labels for the training and test set for the new (mod 3) labels (i.e. separating data set into 3 groups)
+
+    Args:
+        train_y - (n, ) NumPy array containing the labels (a number between 0-9) for each datapoint in the training set
+        test_y - (n, ) NumPy array containing the labels (a number between 0-9) for each datapoint in the test set
+
+    Returns:
+        train_y_mod3 - (n, ) NumPy array containing the new labels (a number between 0-2) for each datapoint in the training set
+        test_y_mod3 - (n, ) NumPy array containing the new labels (a number between 0-2) for each datapoint in the test set
+    """
+    
+    train_y_mod3 = np.mod(train_y, 3)
+    test_y_mod3 = np.mod(test_y, 3)
+    
+    return (train_y_mod3, test_y_mod3)
+
+
+# Principal Components Analysis
 
 def center_data(X):
     """
@@ -112,8 +136,7 @@ def plot_PC(X, pcs, labels, feature_means):
 def reconstruct_PC(x_pca, pcs, n_components, X, feature_means):
     """
     Given the principal component vectors as the columns of matrix pcs,
-    this function reconstructs a single image from its principal component
-    representation, x_pca
+    this function reconstructs a single image from its principal component representation, x_pca
     
     Args:
         x_pca - principal component representation of the original data
@@ -129,6 +152,9 @@ def reconstruct_PC(x_pca, pcs, n_components, X, feature_means):
     x_reconstructed = np.dot(x_pca, pcs[:, range(n_components)].T) + feature_means
     
     return x_reconstructed
+
+
+#   Cubic Kernel Function (given)
 
 
 def cubic_features(X):
