@@ -1,7 +1,14 @@
-# Functions for Support Vector Machine (SVM) linear classifiers
+# ---------------------------------------------------------------------------------------------#
+#                                                                                              #
+#               Functions for Support Vector Machine (SVM) Linear Classifiers                  #
+#                                                                                              #
+# ---------------------------------------------------------------------------------------------#
+
 
 import numpy as np
 from sklearn.svm import LinearSVC
+
+
 
 def one_vs_rest_svm(train_x, train_y, test_x):
     """
