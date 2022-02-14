@@ -1,10 +1,17 @@
-# Utility functions provided to complete the project
+# ---------------------------------------------------------------------------------------------#
+#                                                                                              #
+#                   Utility Functions Provided to Complete the Project                         #
+#                                                                                              #
+# ---------------------------------------------------------------------------------------------#
+
 
 import pickle, gzip, numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import math
-from sklearn.svm import LinearSVR
+
+
+
 
 def plot_images(X):
     if X.ndim == 1:
