@@ -1,6 +1,12 @@
-# Kernel Methods - Functions for Polynomial Kernel and Gaussian RBF Kernel
+# ---------------------------------------------------------------------------------------------#
+#                                                                                              #
+#                  Kernel Functions - Polynomial and Radial Basis Function (RBF)               #
+#                                                                                              #
+# ---------------------------------------------------------------------------------------------#
+
 
 import numpy as np
+
 
 
 def polynomial_kernel(X, Y, c, p):
