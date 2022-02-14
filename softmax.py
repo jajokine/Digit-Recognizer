@@ -164,7 +164,7 @@ def run_gradient_descent_iteration(X, Y, theta, alpha, lambda_factor, temp_param
     return theta
 
 
-def run_kernel_gradient_descent(kernel_matrix, Y, theta, alpha, lambda_factor, temp_parameter):
+def run_kernel_gradient_descent_iteration(kernel_matrix, Y, theta, alpha, lambda_factor, temp_parameter):
     """ 
     Runs one step of batch gradient descent
     
