@@ -10,6 +10,7 @@ from softmax import *
 from features import *
 from kernel import *
 
+np.random.seed(42)
 
 # ---------------------------------------------------------------------------------------------#
 #                                                                                              #
@@ -45,7 +46,7 @@ def run_linear_regression_on_MNIST(lambda_factor=0.01):
     
     return test_error
 
-print('Linear Regression test_error =', run_linear_regression_on_MNIST(lambda_factor=1))
+print('Linear Regression test_error:', run_linear_regression_on_MNIST(lambda_factor=1))
 
 
 # ---------------------------------------------------------------------------------------------#
@@ -124,7 +125,7 @@ def run_softmax_on_MNIST(temp_parameter=1):
     
     return test_error
 
-print('softmax test_error=', run_softmax_on_MNIST(temp_parameter=1)) # Decreasing the value of the temp_parameter produces smaller error (i.e. 0.5)
+print('softmax test_error:', run_softmax_on_MNIST(temp_parameter=1)) # Decreasing the value of the temp_parameter produces smaller error (i.e. 0.5)
 
 
 # ---------------------------------------------------------------------------------------------#
@@ -149,7 +150,7 @@ def run_softmax_on_MNIST_mod3(temp_parameter=1):
     return test_error
     
 
-print('softmax mod3 test_error=', run_softmax_on_MNIST_mod3(temp_parameter=1))
+print('softmax mod3 test_error:', run_softmax_on_MNIST_mod3(temp_parameter=1))
 
 
 # ---------------------------------------------------------------------------------------------#
@@ -217,7 +218,7 @@ theta, cost_function_history = softmax_regression(train_cube, train_y, temp_para
 plot_cost_function_over_time(cost_function_history)
 test_error = compute_test_error(test_cube, test_y, theta, temp_parameter=1)
 
-print("Test error with 10-dim PCA with cubic features", test_error)
+print("Test error with 10-dim PCA with cubic features:", test_error)
 
 
 ## RBF Gaussian Kernel (under construction) - does not scale well to large training samples - should try to find a way for approximation the kernel trick
@@ -273,4 +274,4 @@ def run_kernel_softmax_on_MNIST(kernel_train, train_y, kernel_test, test_y, temp
     
     return test_error
 
-print('softmax RBF Kernel test_error=', run_kernel_softmax_on_MNIST(kernel_train, kernel_train_y, kernel_test, kernel_test_y, temp_parameter=0.5, lambda_factor=0.01, k=10, alpha=0.3, num_iterations=150)) 
+print('Test error with 28-dim PCA with RBF Kernel features:', run_kernel_softmax_on_MNIST(kernel_train, kernel_train_y, kernel_test, kernel_test_y, temp_parameter=0.5, lambda_factor=0.01, k=10, alpha=0.3, num_iterations=150)) 
