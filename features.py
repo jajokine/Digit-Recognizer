@@ -1,4 +1,10 @@
-# Functions for Feature Engineering - Principal Components Analysis (PCA) and Cubic Features
+# ---------------------------------------------------------------------------------------------#
+#                                                                                              #
+#  Functions for Feature Engineering - Principal Components Analysis (PCA) and Cubic Features  #
+#                                                                                              #
+# ---------------------------------------------------------------------------------------------#
+
+
 
 import numpy as np
 import matplotlib.pyplot as plt
