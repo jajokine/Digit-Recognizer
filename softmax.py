@@ -1,4 +1,9 @@
-# Functions for Multinomial (Softmax) Regression and Gradient Descent
+# ---------------------------------------------------------------------------------------------#
+#                                                                                              #
+#           Functions for Modeling and Training - Classifiers and Gradient Descent             #
+#                                                                                              #
+# ---------------------------------------------------------------------------------------------#
+
 
 import sys
 sys.path.append("..")
