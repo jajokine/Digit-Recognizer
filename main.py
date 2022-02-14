@@ -219,37 +219,38 @@ test_error = compute_test_error(test_cube, test_y, theta, temp_parameter=1)
 
 print("Test error with 10-dim PCA with cubic features", test_error)
 
-## RBF Gaussian Kernel (under construction)
 
-# Setting a lower threshold with random permutation
+## RBF Gaussian Kernel (under construction) - does not scale well to large training samples - should try to find a way for approximation the kernel trick
+
+# Preparing features
 train_x, train_y, test_x, test_y = get_MNIST_data()
-n = 5000
-n_test = 2000
-k = 10  # number of categories
+n = 20000   # Number of training samples
+n_test = 4000   # Number of testing samples
+k = 10  # Number of categories
 indices_train = np.random.permutation(n)
 indices_test = np.random.permutation(n_test)
 
 train_x_ = train_x[indices_train,:]
 kernel_train_y = train_y[indices_train]
-kernel_test = test_x[indices_test,:]
+test_x_ = test_x[indices_test,:]
 kernel_test_y = test_y[indices_test]
 
-# PCA representation of training and test sets
-n_components = 18
+# 28-dimensional PCA representation of training and test sets
+n_components = 28
 
 train_x_centered, feature_means = center_data(train_x_)
 pcs = principal_components(train_x_centered)
 train_pca = project_onto_PC(train_x_centered, pcs, n_components, feature_means)
-test_pca = project_onto_PC(test_x_trunc, pcs, n_components, feature_means)
+test_pca = project_onto_PC(test_x_, pcs, n_components, feature_means)
 
-# Kernel matrices for training and testing data
+# Train RBF Kernel matrices with PCA representation
 kernel_train = rbf_kernel(train_pca, train_pca, gamma=0.5)
 kernel_test = rbf_kernel(train_pca, test_pca, gamma=0.5)
     
     
 def run_kernel_softmax_on_MNIST(kernel_train, train_y, kernel_test, test_y, temp_parameter=1.0, lambda_factor=0.01, k=10, alpha=0.3, num_iterations=150):
     """
-    Trains softmax, classifies test data, computes test error, and plots cost function
+    Kernel version that trains softmax, classifies test data, computes test error, and plots cost function
 
     Runs softmax_regression on the MNIST training set and computes the test error using
     the test set. It uses the following values for parameters:
@@ -272,4 +273,4 @@ def run_kernel_softmax_on_MNIST(kernel_train, train_y, kernel_test, test_y, temp
     
     return test_error
 
-print('softmax test_error=', run_kernel_softmax_on_MNIST(kernel_train, kernel_train_y, kernel_test, kernel_test_y, temp_parameter=0.5, lambda_factor=0.01, k=10, alpha=0.3, num_iterations=150)) 
+print('softmax RBF Kernel test_error=', run_kernel_softmax_on_MNIST(kernel_train, kernel_train_y, kernel_test, kernel_test_y, temp_parameter=0.5, lambda_factor=0.01, k=10, alpha=0.3, num_iterations=150)) 
