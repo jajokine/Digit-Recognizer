@@ -221,3 +221,55 @@ print("Test error with 10-dim PCA with cubic features", test_error)
 
 ## RBF Gaussian Kernel (under construction)
 
+# Setting a lower threshold with random permutation
+train_x, train_y, test_x, test_y = get_MNIST_data()
+n = 5000
+n_test = 2000
+k = 10  # number of categories
+indices_train = np.random.permutation(n)
+indices_test = np.random.permutation(n_test)
+
+train_x_ = train_x[indices_train,:]
+kernel_train_y = train_y[indices_train]
+kernel_test = test_x[indices_test,:]
+kernel_test_y = test_y[indices_test]
+
+# PCA representation of training and test sets
+n_components = 18
+
+train_x_centered, feature_means = center_data(train_x_)
+pcs = principal_components(train_x_centered)
+train_pca = project_onto_PC(train_x_centered, pcs, n_components, feature_means)
+test_pca = project_onto_PC(test_x_trunc, pcs, n_components, feature_means)
+
+# Kernel matrices for training and testing data
+kernel_train = rbf_kernel(train_pca, train_pca, gamma=0.5)
+kernel_test = rbf_kernel(train_pca, test_pca, gamma=0.5)
+    
+    
+def run_kernel_softmax_on_MNIST(kernel_train, train_y, kernel_test, test_y, temp_parameter=1.0, lambda_factor=0.01, k=10, alpha=0.3, num_iterations=150):
+    """
+    Trains softmax, classifies test data, computes test error, and plots cost function
+
+    Runs softmax_regression on the MNIST training set and computes the test error using
+    the test set. It uses the following values for parameters:
+    alpha = 0.3
+    lambda = 1e-4
+    num_iterations = 150
+
+    Saves the final theta to ./theta_kernel.pkl.gz
+
+    Returns:
+        Final test error
+    """
+
+    theta, cost_function_history = softmax_kernel_regression(kernel_train, kernel_train_y, temp_parameter, alpha=0.3, lambda_factor=1.0e-4, k=10, num_iterations=150)
+    plot_cost_function_over_time(cost_function_history)
+    test_error = compute_kernel_test_error(kernel_test, test_y_trunc, theta, temp_parameter)
+    
+    # Save the model parameters theta obtained from calling softmax_regression to disk
+    write_pickle_data(theta, "./theta_kernel.pkl.gz")
+    
+    return test_error
+
+print('softmax test_error=', run_kernel_softmax_on_MNIST(kernel_train, kernel_train_y, kernel_test, kernel_test_y, temp_parameter=0.5, lambda_factor=0.01, k=10, alpha=0.3, num_iterations=150)) 
