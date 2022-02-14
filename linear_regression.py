@@ -1,4 +1,11 @@
-# Closed form solution for Linear Regression and function to compute the test error
+# ---------------------------------------------------------------------------------------------#
+#                                                                                              #
+#                               Functions for Linear Regression                                #
+#                                                                                              #
+# ---------------------------------------------------------------------------------------------#
+
+import numpy as np
+
 
 def closed_form(X, Y, lambda_factor):
     """
