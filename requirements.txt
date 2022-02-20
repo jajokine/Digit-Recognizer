@@ -1,0 +1,5 @@
+numpy>=1.19.2
+sys>=3.10.2
+matplotlib>=3.3.2
+sklearn>=0.24.2
+pickle>=4.0
