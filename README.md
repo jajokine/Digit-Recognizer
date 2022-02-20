@@ -14,7 +14,7 @@ The project consisted of first implementing linear methods, such as the closed f
 
 Additional helper functions were given to complete the project in two weeks of time.
 
-DATASET
+**DATASET**
 
 The function call get_MNIST_data() returns the following Numpy arrays:
 
@@ -27,3 +27,8 @@ The function call get_MNIST_data() returns the following Numpy arrays:
     - test_x : A matrix of the test data, formatted the same way as the training data.
     
     - test_y : The labels for the test data, formatted the same wat as the training data.
+
+**ACCESSING CODE**
+
+The file main.py runs the code with the help of the six modules (features.py, kernel.py, linear_regression.py, softmax.py, svm.py and utils.py) that contain helper and utility functions, as well as the main functions for modeling and feature engineering. The dependencies and requirements can be seen from requirements.txt that can be installed in shell with the command pip install -r requirements.txt.
+
