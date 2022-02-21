@@ -26,7 +26,7 @@ The function call get_MNIST_data() returns the following Numpy arrays:
     
     - test_x : A matrix of the test data, formatted the same way as the training data.
     
-    - test_y : The labels for the test data, formatted the same wat as the training data.
+    - test_y : The labels for the test data, formatted the same way as the training data.
 
 **ACCESSING CODE**
 
