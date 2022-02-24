@@ -1,5 +1,6 @@
-# Digit-Recognizer
-MITx - MicroMasters Program on Statistics and Data Science - Machine Learning with Python 
+## Digit-Recognizer
+
+# MITx - MicroMasters Program on Statistics and Data Science - Machine Learning with Python 
 
 Second Project - Non-Linear Classifier for Digit Analysis
 
@@ -14,7 +15,7 @@ The project consisted of first implementing linear methods, such as the closed f
 
 Additional helper functions were given to complete the project in two weeks of time.
 
-**DATASET**
+## Dataset
 
 The function call get_MNIST_data() returns the following Numpy arrays:
 
@@ -28,7 +29,7 @@ The function call get_MNIST_data() returns the following Numpy arrays:
     
     - test_y : The labels for the test data, formatted the same way as the training data.
 
-**ACCESSING CODE**
+## Access and requirements
 
 The file main.py runs the code with the help of the six modules (features.py, kernel.py, linear_regression.py, softmax.py, svm.py and utils.py) that contain helper and utility functions, as well as the main functions for modeling and feature engineering.
 
