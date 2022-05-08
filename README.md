@@ -13,8 +13,6 @@ students, and it is commonly used to train image processing systems. The databas
 
 The project consisted of first implementing linear methods, such as the closed form for linear regression and then Support Vector Machine with a linear decision boundary, before moving on towards non-linear methods with multinomial logistic regression (Softmax regression), and feature engineering with higher-order kernel methods, such as Polynomial and Radial Basis Function (RBF) kernels, as well as low-dimensional feature methods modular arithmetic (mod3) and Principal Components Analysis (PCA).
 
-Additional helper functions were given to complete the project in two weeks of time.
-
 ## Dataset
 
 The function call get_MNIST_data() returns the following Numpy arrays:
